@@ -5,9 +5,8 @@ git clone https://github.com/vim/vim.git
 cd vim
 
 export LDFLAGS=-static
-export DESTDIR=/opt/vim
-./configure --with-x=no  --disable-gui --with-features=small
-make -j 5 install
+./configure --prefix=/opt/vim --with-x=no  --disable-gui --with-features=huge
+make -j $(( 1 + $(grep -c proc /proc/cpuinfo) )) install
 find /opt/vim
 ) >&2
 tar -c /opt/vim
