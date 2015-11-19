@@ -1,0 +1,13 @@
+#!/bin/sh -x
+
+(
+git clone https://github.com/vim/vim.git
+cd vim
+
+export LDFLAGS=-static
+export DESTDIR=/opt/vim
+./configure --with-x=no  --disable-gui --with-features=small
+make -j 5 install
+find /opt/vim
+) >&2
+tar -c /opt/vim

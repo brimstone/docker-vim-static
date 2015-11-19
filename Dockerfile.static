@@ -1,0 +1,7 @@
+FROM scratch
+
+ADD vim.tar .
+
+ENTRYPOINT ["/opt/vim/usr/local/bin/vim"]
+
+VOLUME /opt/vim
